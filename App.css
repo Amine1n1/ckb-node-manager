@@ -1,0 +1,321 @@
+/* =========================
+   Allgemeine Styles
+========================= */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   Buttons hellblau
+========================= */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #4da6ff;
+  color: var(--text-color);
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.25s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #3399ff;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Layout
+========================= */
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   Sidebar
+========================= */
+.sidebar {
+  width: 250px;
+  background-color: #a3d5ff;
+  color: #000;
+  background-color: var(--sidebar-color);
+  color: var(--text-color);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  position: relative;
+  height: 100vh; /* volle Höhe */
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  color: #000;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #000;
+}
+
+.sidebar li.active {
+  background-color: #3399ff;
+  color: #fff;
+}
+
+/* =========================
+   Content Bereich
+========================= */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* =========================
+   Card-Style für NodeInfo, Network, Blockchain, SyncStatus
+========================= */
+.card {
+  width: 100%;
+  background-color: #f9f9f9;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  word-wrap: break-word; /* lange Texte umbrechen */
+  overflow-x: auto; /* scrollbar, falls extrem lange Inhalte */
+}
+
+/* =========================
+   Burger Menü
+========================= */
+.burger {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  background: #a3d5ff;
+  color: #000;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   Tabellen
+========================= */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+table thead tr {
+  background-color: #222;
+  color: #fff;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #444;
+}
+
+/* =========================
+   Responsive Media Queries
+========================= */
+
+/* Desktop/Laptop: Sidebar sichtbar, volle Höhe */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0);
+    position: relative;
+    height: 100vh;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+/* Tablet & Mobile: Cards kleiner */
+@media (max-width: 1024px) {
+  .card {
+    width: 90%;
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+
+  button, select {
+    padding: 0.8em 1em;
+    font-size: 1em;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .sidebar {
+    width: 200px;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  table th, table td {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+}
+
+/* Buttons nebeneinander auf Desktop/Tablet */
+.button-group {
+  display: flex;
+  flex-wrap: wrap; /* falls zu breit, umbrechen */
+  gap: 10px; /* Abstand zwischen Buttons */
+  justify-content: center; /* zentriert auf Desktop/Tablet */
+  margin-bottom: 15px;
+}
+
+/* Optional: Mobile untereinander */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Dark/Light Mode Toggle Button */
+.toggle-mode {
+  margin-bottom: 15px;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s, transform 0.2s;
+  border: 2px solid var(--button-hover);
+}
+
+.toggle-mode:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+/* Container */
+.network-select {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Buttons */
+.network-select button {
+  padding: 0.6em 1.2em;
+  border-radius: 10px;
+  border: 2px solid var(--button-bg);
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effekt */
+.network-select button:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Active Button */
+.network-select button.active {
+  background-color: var(--button-bg);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+}
